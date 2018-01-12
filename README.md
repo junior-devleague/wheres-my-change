@@ -46,6 +46,8 @@ To complete Part II, fulfill the following requirements:
   * ```audio``` with ```id``` of "money-sound" and ```src``` of the "flip.wav" file.
   * ```audio``` with ```id``` of "chaching-sound" and ```src``` of the "chaching.wav" file.
 
+  ---
+
   * ```div``` with an ```id``` of "counter".
     * ```div``` with an ```id``` of "customer".
       * ```img``` with ```src``` of the "happy.png" file.
@@ -54,6 +56,8 @@ To complete Part II, fulfill the following requirements:
       * ```h3``` with an ```id``` of "change-text" and text "Change: ".
       * ```button``` with an ```id``` of "restart" and text "Restart".
       * ```button``` with an ```id``` of "give" and text "Give Change".
+
+      ---
 
   * ```div``` with an ```id``` of "cashbox".
     * ```div``` with an ```id``` of "bill-20" and ```class``` of "bill money" (spacing between the "bill" and "money" indicates that it has two classes: bill and money).
@@ -73,10 +77,14 @@ To complete Part II, fulfill the following requirements:
     * ```div``` with an ```id``` of "cent-1" and ```class``` of "coin money".
       * ```h2``` with a ```class``` of "money text" and text of "1 c".
 
+      ---
+
   * ```div``` with an ```id``` of "computer-speech" and ```class``` of "dialogue".
     * ```h3``` with ```class``` of "title" and text "Computer says: ".
     * ```h1``` with ```id``` of "comp-text" and text "Welcome to the web store!".
-    
+
+    ---
+
   * ```div``` with an ```id``` of "customer-speech" and ```class``` of "dialogue".
     * ```h3``` with ```class``` of "title" and text "Customer says: ".
     * ```h1``` with ```id``` of "cust-text" and text "Hi!".
