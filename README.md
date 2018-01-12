@@ -210,3 +210,185 @@ To complete Part III, fulfill the following requirements:
 Woohoo!! That was quite a lot of HTML and CSS. Onto JavaScript!
 
 ---
+
+### Part IV JS
+
+To complete Part IV, fulfill the following requirements:
+
+1. Create a window.onload function as follows:
+
+``` javascript
+window.onload = function() {
+  //code goes in here
+}
+
+```
+#### Store your money in a variable.
+
+2. Create a ```variable``` "money" that will store all the elements of the **class** "money-text".
+
+#### Store the audio files in variables.
+
+3. Create a ```variable``` called "moneySound" that will store the money-sound audio.
+
+4. Create a ```variable``` called "chachingSound" that will store the chaching-sound audio.
+
+#### Store the buttons in variables.
+
+5. Create a ```variable``` called "restart" that will store the restart button.
+
+6. Create a ```variable``` called "give" that will store the give button.
+
+#### Store the divs where we will change the text in variables.
+
+7. Create a ```variable``` called "custText" that will store the element with ```id``` "cust-text".
+
+8. Create a ```variable``` called "compText" that will store the element with ```id``` of "comp-text".
+
+9. Create a ```variable``` called "change-text" that will store the element with ```id``` of "change-text".
+
+10. Create a variable called changeMaker and set that equal to 0.
+
+#### Create objects to store the items that your customer can buy.
+
+11. Create a ```variable``` called "apple" that will store an ```object```. This ```object``` will contain properties "name" and "price" as follows.
+
+```JavaScript
+var apple = {
+  name: "apple",
+  price: 3.23
+}
+```
+You can make up your own prices!
+
+**Create variables called "grape", "banana", "coconut", and "lemon", or other grocery items of your choice.**
+
+13. Create a ```variable``` called "items" that will hold an ```array```. Store your grocery item variables into this array like so.
+
+```JavaScript
+var items = [apple, grape, banana ...etc.];
+```
+
+#### Add event listeners to your cash and coins that will increment the changeMaker to the appropriate amount.
+
+14. Add event listeners to all of your bills and coins. Every time they are clicked, do the following:
+* Play the ```moneySound```.
+* Update the ```changeMaker``` variable to the correct sum of choices that the user pressed. If they pressed the $20, add 20 to ```changeMaker```. If they pressed the .25 cents, add .25 to ```changeMaker```, so on and so forth.
+* Change the ```innerHTML``` of ```changeText``` to display the current value of ```changeMaker```.
+
+#### Create functions to update our computer and customer dialogue boxes.
+
+15. Create a ```function``` named compSpeech that will take in a parameter "speech".
+* In this function, change the innerHTML of compText to equal the parameter speech.
+
+16. Create a ```function``` named custSpeech that will take in a parameter "speech".
+* In this function, change the innerHTML of custText to equal the parameter speech.
+
+#### Create a function to generate the necessary items to start a new scene! e.g. Generate number of items purchased and random items, respective dialogue for that purchase...etc.
+
+17. Create a ```function``` named startScene that will take in no parameters. In this function, do the following:
+* Create a ```variable``` called "randNum" that will store a random **Integer** from 0 to the number of items in the items array.
+* Create a ```variable``` called "item" that will store a random item from the items array. **Hint: Use the randNum variable you just created to help you access a random item from the items array.**
+* Create a ```variable``` called "num" that will store a random **Integer** from 1 to 100.
+* Create a ```variable``` called "total" that will multiply the values stored in ```num``` by the price of the random item.
+* Create a ```variable``` called "randPayout" that will store a random number that is GREATER THAN the total. This is how much the customer will pay.
+* Create a ```variable``` called "change" that will calculate how much the correct change is.
+
+---
+* Now, paste the following code into the startScene function.
+
+**DISCLAIMER: This code example is not exemplar for efficiency or clarity. It is just to observe how we can return different types of values (objects, functions) in ways that we haven't been familiar with yet!**
+
+```JavaScript
+var script = (function() {
+
+  var custDialogue = (function() {
+    // Item to buy
+    var speech1 = (function(){
+      var dialogue;
+      if (num != 1) {
+        dialogue = "Hi! I want to buy " + num + " " + item.name + "s.";
+      } else {
+        dialogue = "Hi! I want to buy " + num + " " + item.name + ".";
+      }
+      return dialogue;
+    })();
+
+    // Money paid.
+    var speech2 = "Here is $" + randPayout.toFixed(2) + "!";
+
+    var dialogue = {
+      dialogue1 : speech1,
+      dialogue2 : speech2
+    }
+
+    return dialogue;
+  })();
+
+  var compDialogue = (function() {
+    // Cost
+    var speech1 = "That will be $" + total.toFixed(2) + ".";
+    // Change
+    var speech2 = "Your change will be $" + change.toFixed(2) + ".";
+
+    var dialogue = {
+      giveTotal : speech1,
+      giveChange : speech2
+    }
+
+    return dialogue;
+  })();
+
+  var talkingSet = {
+    cust: custDialogue,
+    comp: compDialogue
+  }
+
+  return talkingSet;
+})();
+```
+This code looks different! What is it doing?
+
+Test out and console.log different parts to answer the following. Write or type them out somewhere and discuss the answers with your instructor afterwards:
+1. What is the value of our variable script?
+2. What will script.cust return?
+3. What will script.cust.dialogue1 return?
+4. How do we access the string where the computer says what our change will be?
+
+---
+
+* Add an Event Listener to the ```restart``` button that listens for a click. When a click is detected, do the following:
+* Set ```changeMaker``` equal to 0.
+* Set the innerHTML of ```changeText``` to show the value of ```changeMaker```.
+
+---
+
+* Add an Event Listener to the ```give``` button that listens for a click. When a click is detected do the following:
+* Create an ```if statement``` that will check if the change the user generated is equal to the correct change value. If so:
+  * Play the ```chachingSound```.
+  * Make the computer dialogue box show how much change we are giving the customer. Use the ```compSpeech``` function and give it the correct string as the parameter by accessing it from the ```script``` variable.
+  * Make the customer dialogue box display "Thanks!".
+* ELSE
+  * console.log the value of changeMaker and the correct change to see how much you were off by.
+
+---
+
+* Create a ```setTimeout``` using the reference to custSpeech and compSpeech functions. Access the speech needed from the script variable. We want the dialogue to happen in this order:
+1. Customer tells us what they want to buy 2000 ms after the window loads.
+
+2. 2000 ms afterwards, the computer dialogue box displays how much that will cost.
+
+3. 2000 ms afterwards, the customer tells us how much they will pay.
+
+An example for the first setTimeout is as follows:
+```JavaScript
+setTimeout(custSpeech.bind(null, script.cust.dialogue1), 2000);
+// Use .bind to give the custSpeech function reference the parameter of what they want to buy (accessed using script.cust.dialogue1). .bind is a more complex topic that we will discuss later. However, feel free to do research on what this is!
+
+```
+
+Woohoo! That was a lot! Nesting functions and returning objects and functions is another way to limit who has access to your variables. Not just anyone should be able to manipulate important variables!
+
+## Stretch Goals
+
+1. Over time, change the source of the customer image to display the smiley, sad, then angry face while the change is being calculated by the user. Customers don't like waiting! 
